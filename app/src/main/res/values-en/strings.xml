@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Versus</string>
+
+    <!-- Tournaments -->
+    <string name="volver">Back</string>
+    <string name="nuevo_torneo">New tournament</string>
+    <string name="nombre_torneo">Tournament name</string>
+    <string name="hint_nombre_torneo">E.g. Friends tournament</string>
+    <string name="participantes">Participants</string>
+    <string name="contador_inicial">0/32</string>
+    <string name="hint_participante">Participant name</string>
+    <string name="agregar_simbolo">+</string>
+    <string name="crear_generar_torneo">Create and generate tournament</string>
+</resources>

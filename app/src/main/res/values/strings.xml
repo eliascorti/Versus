@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">Versus</string>
+
+    <!-- Pantalla de Torneos -->
+    <string name="volver">Volver</string>
+    <string name="nuevo_torneo">Nuevo torneo</string>
+    <string name="nombre_torneo">Nombre del torneo</string>
+    <string name="hint_nombre_torneo">Ej. Torneo de amigos</string>
+    <string name="participantes">Participantes</string>
+    <string name="contador_inicial">0/32</string>
+    <string name="hint_participante">Nombre del participante</string>
+    <string name="agregar_simbolo">+</string>
+    <string name="crear_generar_torneo">Crear y generar torneo</string>
 </resources>
