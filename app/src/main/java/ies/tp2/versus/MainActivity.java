@@ -26,6 +26,8 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    //comentario de prueba
+
     private void activarTarjetas() {
         CardView cardTorneos = findViewById(R.id.cardTorneos);
         CardView cardEquipos = findViewById(R.id.cardEquipos);
