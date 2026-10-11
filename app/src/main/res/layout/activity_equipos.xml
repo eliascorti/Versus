@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
@@ -7,5 +8,254 @@
     android:layout_height="match_parent"
     android:background="#FDFDFD"
     tools:context=".EquiposActivity">
+
+    <!-- Encabezado -->
+    <LinearLayout
+        android:id="@+id/layoutEncabezado"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:background="#FFFFFF"
+        android:elevation="3dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <ImageView
+            android:id="@+id/imgVolver"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:contentDescription="@string/volver"
+            app:srcCompat="@drawable/left_arrow" />
+
+        <TextView
+            android:id="@+id/txtTitulo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@string/generar_equipos"
+            android:textColor="#17212F"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <!-- Contenido desplazable -->
+    <ScrollView
+        android:id="@+id/scrollContenido"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintTop_toBottomOf="@id/layoutEncabezado"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:id="@+id/layoutContenido"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <!-- Encabezado jugadores -->
+            <LinearLayout
+                android:id="@+id/layoutEncabezadoJugadores"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/txtJugadores"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/jugadores"
+                    android:textColor="#17212F"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/txtContadorJugadores"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/contador_inicial"
+                    android:textColor="#788697"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+
+            <!-- Agregar jugador -->
+            <LinearLayout
+                android:id="@+id/layoutAgregarJugador"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/edtJugador"
+                    android:layout_width="0dp"
+                    android:layout_height="52dp"
+                    android:layout_weight="1"
+                    android:hint="@string/hint_jugador"
+                    android:inputType="text|textCapWords"
+                    android:singleLine="true"
+                    android:textColor="#17212F"
+                    android:textColorHint="#929BA6"
+                    android:textSize="15sp" />
+
+                <Button
+                    android:id="@+id/btnAgregarJugador"
+                    android:layout_width="52dp"
+                    android:layout_height="52dp"
+                    android:layout_marginStart="12dp"
+                    android:backgroundTint="#DCEBFC"
+                    android:minWidth="0dp"
+                    android:minHeight="0dp"
+                    android:padding="0dp"
+                    android:text="@string/agregar_simbolo"
+                    android:textAllCaps="false"
+                    android:textColor="#17212F"
+                    android:textSize="24sp" />
+
+            </LinearLayout>
+
+            <!-- Lista dinámica de jugadores -->
+            <LinearLayout
+                android:id="@+id/layoutListaJugadores"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="vertical"
+                android:padding="4dp" />
+
+            <!-- Cantidad de equipos -->
+            <TextView
+                android:id="@+id/txtCantidadEquiposTitulo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:text="@string/cantidad_equipos"
+                android:textColor="#17212F"
+                android:textSize="17sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:id="@+id/layoutCantidadEquipos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btnRestarEquipo"
+                    android:layout_width="52dp"
+                    android:layout_height="52dp"
+                    android:backgroundTint="#DCEBFC"
+                    android:minWidth="0dp"
+                    android:minHeight="0dp"
+                    android:padding="0dp"
+                    android:text="-"
+                    android:textAllCaps="false"
+                    android:textColor="#17212F"
+                    android:textSize="24sp" />
+
+                <TextView
+                    android:id="@+id/txtCantidadEquipos"
+                    android:layout_width="80dp"
+                    android:layout_height="52dp"
+                    android:gravity="center"
+                    android:text="2"
+                    android:textColor="#17212F"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/btnSumarEquipo"
+                    android:layout_width="52dp"
+                    android:layout_height="52dp"
+                    android:backgroundTint="#DCEBFC"
+                    android:minWidth="0dp"
+                    android:minHeight="0dp"
+                    android:padding="0dp"
+                    android:text="@string/agregar_simbolo"
+                    android:textAllCaps="false"
+                    android:textColor="#17212F"
+                    android:textSize="24sp" />
+
+            </LinearLayout>
+
+            <!-- Distribución -->
+            <TextView
+                android:id="@+id/txtDistribucionTitulo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:text="@string/distribucion"
+                android:textColor="#17212F"
+                android:textSize="17sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:id="@+id/layoutResumenDistribucion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:background="#F2F4F7"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:id="@+id/txtJugadoresPorEquipo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textColor="#17212F"
+                    android:textSize="15sp"
+                    tools:text="3 jugadores por equipo" />
+
+                <TextView
+                    android:id="@+id/txtJugadoresLibres"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text=""
+                    android:textColor="#788697"
+                    android:textSize="15sp"
+                    tools:text="1 jugador libre" />
+
+            </LinearLayout>
+
+            <!-- Botón generar -->
+            <Button
+                android:id="@+id/btnGenerarEquipos"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginTop="32dp"
+                android:backgroundTint="#5D93D0"
+                android:text="@string/generar_equipos"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+
+            <LinearLayout
+                android:id="@+id/layoutResultados"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:orientation="vertical" />
+
+        </LinearLayout>
+
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
