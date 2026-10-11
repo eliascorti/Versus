@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Versus</string>
+
+    <!-- Tournaments -->
+    <string name="volver">Back</string>
+    <string name="contador_inicial">0/32</string>
+    <string name="agregar_simbolo">+</string>
+
+
+    <!-- Teams -->
+    <string name="generar_equipos">Generate teams</string>
+    <string name="jugadores">Players</string>
+    <string name="hint_jugador">Player name</string>
+    <string name="cantidad_equipos">Number of teams</string>
+    <string name="distribucion">Distribution</string>
+
+    <string name="formato_jugadores_por_equipo">%1$d players per team</string>
+    <string name="formato_jugadores_libres">%1$d free players</string>
+
+    <string name="volver_a_sortear">Shuffle again</string>
+</resources>

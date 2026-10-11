@@ -1,3 +1,22 @@
 <resources>
     <string name="app_name">Versus</string>
+
+    <!-- Recursos comunes de navegación y controles -->
+    <string name="volver">Volver</string>
+    <string name="contador_inicial">0/32</string>
+    <string name="agregar_simbolo">+</string>
+
+    <!-- Pantalla de Equipos -->
+    <string name="generar_equipos">Generar equipos</string>
+    <string name="jugadores">Jugadores</string>
+    <string name="hint_jugador">Nombre del jugador</string>
+    <string name="cantidad_equipos">Cantidad de equipos</string>
+    <string name="distribucion">Distribución</string>
+
+    <string name="formato_jugadores_por_equipo">%1$d jugadores por equipo</string> //%1$d es porque son variables dinamicas, las que no tienen es son fijas.
+    <string name="formato_jugadores_libres">%1$d jugadores libres</string>
+
+    <string name="volver_a_sortear">Volver a sortear</string>
+
+
 </resources>
