@@ -18,5 +18,10 @@
 
     <string name="volver_a_sortear">Volver a sortear</string>
 
+    <!-- Resultados de equipos -->
+    <string name="equipo_numero">Equipo %1$d</string>
+    <string name="jugadores_libres_titulo">Jugadores libres</string>
+    <string name="error_jugadores_insuficientes">No hay suficientes jugadores para generar los equipos</string>
+
 
 </resources>
