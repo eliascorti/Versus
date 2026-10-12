@@ -24,4 +24,10 @@
     <string name="formato_jugadores_libres">%1$d free players</string>
 
     <string name="volver_a_sortear">Shuffle again</string>
+
+    <!-- Team results -->
+    <string name="equipo_numero">Team %1$d</string>
+    <string name="jugadores_libres_titulo">Free players</string>
+    <string name="error_jugadores_insuficientes">There are not enough players to generate the teams</string>
+
 </resources>

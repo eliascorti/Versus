@@ -17,6 +17,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import androidx.core.content.ContextCompat;
 
 
 public class EquiposActivity extends AppCompatActivity {
@@ -137,9 +138,10 @@ public class EquiposActivity extends AppCompatActivity {
     private void generarEquipos() {
 
         if (jugadores.size() < cantidadEquipos) {
+
             Toast.makeText(
                     this,
-                    "No hay suficientes jugadores para generar los equipos",
+                    getString(R.string.error_jugadores_insuficientes),
                     Toast.LENGTH_SHORT
             ).show();
 
@@ -147,9 +149,10 @@ public class EquiposActivity extends AppCompatActivity {
         }
 
         // Copiamos la lista para no modificar la original
-        ArrayList<String> jugadoresMezclados = new ArrayList<>(jugadores);
+        ArrayList<String> jugadoresMezclados =
+                new ArrayList<>(jugadores);
 
-        // Mezclamos aleatoriamente
+        // Mezclamos los jugadores aleatoriamente
         Collections.shuffle(jugadoresMezclados);
 
         int jugadoresPorEquipo =
@@ -158,72 +161,157 @@ public class EquiposActivity extends AppCompatActivity {
         int jugadoresLibres =
                 jugadoresMezclados.size() % cantidadEquipos;
 
-        // Borramos el resultado anterior
+        // Eliminamos los resultados del sorteo anterior
         layoutResultados.removeAllViews();
 
         int posicionJugador = 0;
 
-        // Creamos cada equipo
+        // Crear las tarjetas de cada equipo
         for (int equipo = 1; equipo <= cantidadEquipos; equipo++) {
 
-            TextView tituloEquipo = new TextView(this);
+            LinearLayout tarjetaEquipo = crearTarjeta();
 
-            tituloEquipo.setText("Equipo " + equipo);
-            tituloEquipo.setTextSize(18);
-            tituloEquipo.setTextColor(
-                    getResources().getColor(android.R.color.black)
+            TextView tituloEquipo = crearTituloTarjeta(
+                    getString(R.string.equipo_numero, equipo)
             );
-            tituloEquipo.setPadding(0, 20, 0, 8);
 
-            layoutResultados.addView(tituloEquipo);
+            tarjetaEquipo.addView(tituloEquipo);
 
             for (int j = 0; j < jugadoresPorEquipo; j++) {
 
-                TextView jugador = new TextView(this);
-
-                jugador.setText(
-                        "• " + jugadoresMezclados.get(posicionJugador)
+                TextView jugador = crearTextoJugador(
+                        jugadoresMezclados.get(posicionJugador)
                 );
 
-                jugador.setTextSize(16);
-                jugador.setPadding(8, 4, 0, 4);
-
-                layoutResultados.addView(jugador);
+                tarjetaEquipo.addView(jugador);
 
                 posicionJugador++;
             }
+
+            layoutResultados.addView(tarjetaEquipo);
         }
 
-        // Mostramos los jugadores que sobraron
+        // Crear tarjeta para jugadores libres
         if (jugadoresLibres > 0) {
 
-            TextView tituloLibres = new TextView(this);
+            LinearLayout tarjetaLibres = crearTarjeta();
 
-            tituloLibres.setText("Jugadores libres");
-            tituloLibres.setTextSize(18);
-            tituloLibres.setTextColor(
-                    getResources().getColor(android.R.color.black)
+            TextView tituloLibres = crearTituloTarjeta(
+                    getString(R.string.jugadores_libres_titulo)
             );
-            tituloLibres.setPadding(0, 24, 0, 8);
 
-            layoutResultados.addView(tituloLibres);
+            tarjetaLibres.addView(tituloLibres);
 
             while (posicionJugador < jugadoresMezclados.size()) {
 
-                TextView jugadorLibre = new TextView(this);
-
-                jugadorLibre.setText(
-                        "• " + jugadoresMezclados.get(posicionJugador)
+                TextView jugadorLibre = crearTextoJugador(
+                        jugadoresMezclados.get(posicionJugador)
                 );
 
-                jugadorLibre.setTextSize(16);
-                jugadorLibre.setPadding(8, 4, 0, 4);
-
-                layoutResultados.addView(jugadorLibre);
+                tarjetaLibres.addView(jugadorLibre);
 
                 posicionJugador++;
             }
+
+            layoutResultados.addView(tarjetaLibres);
         }
+    }
+
+    private LinearLayout crearTarjeta() {
+
+        LinearLayout tarjeta = new LinearLayout(this);
+
+        tarjeta.setOrientation(LinearLayout.VERTICAL);
+
+        tarjeta.setBackgroundResource(
+                R.drawable.resultado_equipo_background
+        );
+
+        LinearLayout.LayoutParams parametros =
+                new LinearLayout.LayoutParams(
+                        LinearLayout.LayoutParams.MATCH_PARENT,
+                        LinearLayout.LayoutParams.WRAP_CONTENT
+                );
+
+        parametros.setMargins(
+                0,
+                convertirDp(12),
+                0,
+                convertirDp(12)
+        );
+
+        tarjeta.setLayoutParams(parametros);
+
+        tarjeta.setPadding(
+                convertirDp(16),
+                convertirDp(16),
+                convertirDp(16),
+                convertirDp(16)
+        );
+
+        return tarjeta;
+    }
+
+    private TextView crearTituloTarjeta(String titulo) {
+
+        TextView textView = new TextView(this);
+
+        textView.setText(titulo);
+
+        textView.setTextSize(18);
+
+        textView.setTextColor(
+                ContextCompat.getColor(
+                        this,
+                        android.R.color.black
+                )
+        );
+
+        textView.setTypeface(
+                null,
+                android.graphics.Typeface.BOLD
+        );
+
+        textView.setPadding(
+                0,
+                0,
+                0,
+                convertirDp(10)
+        );
+
+        return textView;
+    }
+
+    private int convertirDp(int dp) {
+
+        float densidad = getResources().getDisplayMetrics().density;
+
+        return (int) (dp * densidad);
+    }
+
+    private TextView crearTextoJugador(String nombre) {
+
+        TextView textView = new TextView(this);
+
+        textView.setText("• " + nombre);
+
+        textView.setTextSize(16);
+
+        textView.setTextColor(
+                ContextCompat.getColor(
+                        this,
+                        android.R.color.black
+                )
+        );
+
+        textView.setPadding(
+                convertirDp(4),
+                convertirDp(4),
+                0,
+                convertirDp(4)
+        );
+
+        return textView;
     }
 
     private void agregarJugador() {
