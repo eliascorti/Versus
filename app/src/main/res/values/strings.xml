@@ -15,8 +15,13 @@
 
     <string name="formato_jugadores_por_equipo">%1$d jugadores por equipo</string> //%1$d es porque son variables dinamicas, las que no tienen es son fijas.
     <string name="formato_jugadores_libres">%1$d jugadores libres</string>
-
     <string name="volver_a_sortear">Volver a sortear</string>
+    <string name="error_jugador_duplicado">Ese jugador ya fue agregado</string>
+    <string name="error_nombre_vacio">Ingresá un nombre</string>
+    <string name="error_max_jugadores">Máximo 32 jugadores</string>
+
+    <string name="eliminar_jugador">Eliminar jugador</string>
+
 
     <!-- Resultados de equipos -->
     <string name="equipo_numero">Equipo %1$d</string>
