@@ -24,4 +24,22 @@
     <string name="partidos_resueltos">%1$d/%2$d</string>
     <string name="versus">VS</string>
 
+
+    <!-- Teams -->
+    <string name="generar_equipos">Generar equipos</string>
+    <string name="jugadores">Jugadores</string>
+    <string name="hint_jugador">Nombre del jugador</string>
+    <string name="cantidad_equipos">Cantidad de equipos</string>
+    <string name="distribucion">Distribución</string>
+    <string name="formato_jugadores_por_equipo">%1$d jugadores por equipo</string>
+    <string name="formato_jugadores_libres">%1$d jugadores libres</string>
+    <string name="volver_a_sortear">Volver a sortear</string>
+    <string name="error_jugador_duplicado">Ese jugador ya fue agregado</string>
+    <string name="error_nombre_vacio">Ingresá un nombre</string>
+    <string name="error_max_jugadores">Máximo 32 jugadores</string>
+    <string name="eliminar_jugador">Eliminar jugador</string>
+    <string name="equipo_numero">Equipo %1$d</string>
+    <string name="jugadores_libres_titulo">Jugadores libres</string>
+    <string name="error_jugadores_insuficientes">No hay suficientes jugadores para generar los equipos</string>
+
 </resources>
