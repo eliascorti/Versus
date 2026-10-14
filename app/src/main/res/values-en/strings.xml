@@ -22,8 +22,12 @@
 
     <string name="formato_jugadores_por_equipo">%1$d players per team</string>
     <string name="formato_jugadores_libres">%1$d free players</string>
-
     <string name="volver_a_sortear">Shuffle again</string>
+    <string name="error_jugador_duplicado">That player has already been added</string>
+    <string name="error_nombre_vacio">Enter a name</string>
+    <string name="error_max_jugadores">Maximum 32 players</string>
+
+    <string name="eliminar_jugador">Remove player</string>
 
     <!-- Team results -->
     <string name="equipo_numero">Team %1$d</string>

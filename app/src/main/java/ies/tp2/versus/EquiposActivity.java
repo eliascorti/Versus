@@ -18,7 +18,10 @@ import androidx.core.view.WindowInsetsCompat;
 import java.util.ArrayList;
 import java.util.Collections;
 import androidx.core.content.ContextCompat;
+import android.widget.ScrollView;
 
+import android.widget.ImageButton;
+import android.graphics.Color;
 
 public class EquiposActivity extends AppCompatActivity {
 
@@ -45,6 +48,8 @@ public class EquiposActivity extends AppCompatActivity {
     private static final int MAX_JUGADORES = 32;
 
     private LinearLayout layoutResultados;
+
+    private ScrollView scrollContenido;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,6 +95,8 @@ public class EquiposActivity extends AppCompatActivity {
         layoutListaJugadores = findViewById(R.id.layoutListaJugadores);
 
         imgVolver = findViewById(R.id.imgVolver);
+
+        scrollContenido = findViewById(R.id.scrollContenido);
 
         // Botón para volver
         imgVolver.setOnClickListener(v -> finish());
@@ -215,6 +222,17 @@ public class EquiposActivity extends AppCompatActivity {
 
             layoutResultados.addView(tarjetaLibres);
         }
+
+        //Scroll automatico hacia las tarjetas de equipo
+        scrollContenido.post(() -> {
+
+            int posicionY = layoutResultados.getTop();
+
+            scrollContenido.smoothScrollTo(
+                    0,
+                    posicionY
+            );
+        });
     }
 
     private LinearLayout crearTarjeta() {
@@ -325,7 +343,7 @@ public class EquiposActivity extends AppCompatActivity {
 
             Toast.makeText(
                     this,
-                    "Ingresá un nombre",
+                    getString(R.string.error_nombre_vacio),
                     Toast.LENGTH_SHORT
             ).show();
 
@@ -336,11 +354,26 @@ public class EquiposActivity extends AppCompatActivity {
 
             Toast.makeText(
                     this,
-                    "Máximo 32 jugadores",
+                    getString(R.string.error_max_jugadores),
                     Toast.LENGTH_SHORT
             ).show();
 
             return;
+        }
+
+        // Evitar nombres duplicados
+        for (String jugadorExistente : jugadores) {
+
+            if (jugadorExistente.equalsIgnoreCase(nombre)) {
+
+                Toast.makeText(
+                        this,
+                        getString(R.string.error_jugador_duplicado),
+                        Toast.LENGTH_SHORT
+                ).show();
+
+                return;
+            }
         }
 
         jugadores.add(nombre);
@@ -360,15 +393,50 @@ public class EquiposActivity extends AppCompatActivity {
 
             String nombre = jugadores.get(i);
 
-            LinearLayout fila = new LinearLayout(this);
+            // Tarjeta del jugador
+            LinearLayout tarjetaJugador = new LinearLayout(this);
 
-            fila.setOrientation(LinearLayout.HORIZONTAL);
-            fila.setPadding(8, 8, 8, 8);
+            tarjetaJugador.setOrientation(LinearLayout.HORIZONTAL);
+            tarjetaJugador.setGravity(android.view.Gravity.CENTER_VERTICAL);
 
+            tarjetaJugador.setBackgroundResource(
+                    R.drawable.jugador_item_background
+            );
+
+            tarjetaJugador.setPadding(
+                    convertirDp(16),
+                    convertirDp(12),
+                    convertirDp(12),
+                    convertirDp(12)
+            );
+
+            LinearLayout.LayoutParams parametrosTarjeta =
+                    new LinearLayout.LayoutParams(
+                            LinearLayout.LayoutParams.MATCH_PARENT,
+                            LinearLayout.LayoutParams.WRAP_CONTENT
+                    );
+
+            parametrosTarjeta.setMargins(
+                    0,
+                    convertirDp(6),
+                    0,
+                    convertirDp(6)
+            );
+
+            tarjetaJugador.setLayoutParams(parametrosTarjeta);
+
+            // Nombre del jugador
             TextView txtNombre = new TextView(this);
 
             txtNombre.setText(nombre);
             txtNombre.setTextSize(16);
+
+            txtNombre.setTextColor(
+                    ContextCompat.getColor(
+                            this,
+                            android.R.color.black
+                    )
+            );
 
             txtNombre.setLayoutParams(
                     new LinearLayout.LayoutParams(
@@ -378,9 +446,35 @@ public class EquiposActivity extends AppCompatActivity {
                     )
             );
 
-            Button btnEliminar = new Button(this);
+            // Botón papelera
+            ImageButton btnEliminar = new ImageButton(this);
 
-            btnEliminar.setText("X");
+            LinearLayout.LayoutParams parametrosBoton =
+                    new LinearLayout.LayoutParams(
+                            convertirDp(40),
+                            convertirDp(40)
+                    );
+
+            btnEliminar.setLayoutParams(parametrosBoton);
+
+            btnEliminar.setImageResource(
+                    R.drawable.ic_delete
+            );
+
+            btnEliminar.setBackgroundColor(
+                    Color.TRANSPARENT
+            );
+
+            btnEliminar.setPadding(
+                    convertirDp(8),
+                    convertirDp(8),
+                    convertirDp(8),
+                    convertirDp(8)
+            );
+
+            btnEliminar.setContentDescription(
+                    getString(R.string.eliminar_jugador)
+            );
 
             int posicion = i;
 
@@ -394,10 +488,10 @@ public class EquiposActivity extends AppCompatActivity {
 
             });
 
-            fila.addView(txtNombre);
-            fila.addView(btnEliminar);
+            tarjetaJugador.addView(txtNombre);
+            tarjetaJugador.addView(btnEliminar);
 
-            layoutListaJugadores.addView(fila);
+            layoutListaJugadores.addView(tarjetaJugador);
         }
     }
 
