@@ -18,6 +18,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import android.content.Intent;
 
 import java.util.ArrayList;
 
@@ -227,6 +228,7 @@ public class TorneosActivity extends AppCompatActivity {
         txtContador.setText(participantes.size() + "/32");
     }
 
+
     private void accionGenerarTorneo() {
 
         EditText edtNombreTorneo =
@@ -235,7 +237,6 @@ public class TorneosActivity extends AppCompatActivity {
         String nombreTorneo =
                 edtNombreTorneo.getText().toString().trim();
 
-        // Validar nombre del torneo
         if (nombreTorneo.isEmpty()) {
             Toast.makeText(
                     this,
@@ -245,7 +246,6 @@ public class TorneosActivity extends AppCompatActivity {
             return;
         }
 
-        // Validar cantidad mínima
         if (participantes.size() < 2) {
             Toast.makeText(
                     this,
@@ -255,14 +255,17 @@ public class TorneosActivity extends AppCompatActivity {
             return;
         }
 
-        Toast.makeText(
-                this,
-                "Torneo listo para generar",
-                Toast.LENGTH_SHORT
-        ).show();
+        Intent intent = new Intent(
+                TorneosActivity.this,
+                EnfrentamientosActivity.class
+        );
 
-        // Próximamente: generar enfrentamientos.
+        intent.putExtra("nombreTorneo", nombreTorneo);
+        intent.putStringArrayListExtra("participantes", participantes);
+
+        startActivity(intent);
     }
+
 
     private void accionVolver() {
         finish();

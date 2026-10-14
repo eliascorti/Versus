@@ -11,4 +11,17 @@
     <string name="hint_participante">Nombre del participante</string>
     <string name="agregar_simbolo">+</string>
     <string name="crear_generar_torneo">Crear y generar torneo</string>
+    <string name="datos_torneo_error">No se recibieron los datos del torneo</string>
+    <string name="seleccionar_ganadores">Seleccioná todos los ganadores</string>
+    <string name="torneo_finalizado">Torneo finalizado</string>
+    <string name="ronda_final">Final</string>
+    <string name="ronda_semifinales">Semifinales</string>
+    <string name="ronda_cuartos">Cuartos de final</string>
+    <string name="ronda_octavos">Octavos de final</string>
+    <string name="ronda_numero">Ronda %1$d</string>
+    <string name="partido_numero">PARTIDO %1$d</string>
+    <string name="participante_libre">%1$s pasa automáticamente a la siguiente ronda</string>
+    <string name="partidos_resueltos">%1$d/%2$d</string>
+    <string name="versus">VS</string>
+
 </resources>
