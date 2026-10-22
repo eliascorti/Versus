@@ -6,7 +6,8 @@
         <item name="colorOnSurface">@color/versus_text</item>
         <item name="android:colorBackground">@color/versus_background</item>
         <item name="android:windowLightStatusBar">true</item>
-        <item name="android:fontFamily">sans</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="fontFamily">sans-serif</item>
         <item name="android:buttonStyle">@style/Widget.Versus.PlatformButton</item>
         <item name="buttonStyle">@style/Widget.Versus.PlatformButton</item>
         <item name="materialButtonStyle">@style/Widget.Versus.Button</item>
