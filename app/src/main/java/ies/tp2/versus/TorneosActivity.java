@@ -1,7 +1,6 @@
 
 package ies.tp2.versus;
 
-import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -9,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -118,17 +118,14 @@ public class TorneosActivity extends AppCompatActivity {
         fila.setOrientation(LinearLayout.HORIZONTAL);
         fila.setGravity(Gravity.CENTER_VERTICAL);
 
-        int paddingHorizontal = dp(12);
-        int paddingVertical = dp(8);
-
         fila.setPadding(
-                paddingHorizontal,
-                paddingVertical,
-                paddingVertical,
-                paddingVertical
+                dp(16),
+                dp(12),
+                dp(12),
+                dp(12)
         );
 
-        fila.setBackgroundColor(Color.rgb(242, 247, 253));
+        fila.setBackgroundResource(R.drawable.jugador_item_background);
 
         LinearLayout.LayoutParams parametrosFila =
                 new LinearLayout.LayoutParams(
@@ -136,14 +133,14 @@ public class TorneosActivity extends AppCompatActivity {
                         LinearLayout.LayoutParams.WRAP_CONTENT
                 );
 
-        parametrosFila.setMargins(0, 0, 0, dp(8));
+        parametrosFila.setMargins(0, dp(6), 0, dp(6));
 
         // Nombre del participante
         TextView txtNombre = new TextView(this);
 
         txtNombre.setText(nombre);
         txtNombre.setTextSize(16);
-        txtNombre.setTextColor(Color.rgb(23, 33, 47));
+        txtNombre.setTextColor(Color.BLACK);
 
         LinearLayout.LayoutParams parametrosNombre =
                 new LinearLayout.LayoutParams(
@@ -155,28 +152,11 @@ public class TorneosActivity extends AppCompatActivity {
         fila.addView(txtNombre, parametrosNombre);
 
         // Botón eliminar
-        Button btnEliminar = new Button(this);
-
-        btnEliminar.setText("−");
-        btnEliminar.setTextSize(22);
-        btnEliminar.setTextColor(Color.rgb(190, 50, 65));
-        btnEliminar.setAllCaps(false);
-        btnEliminar.setGravity(Gravity.CENTER);
-
-        // Quitar espacios internos predeterminados
-        btnEliminar.setMinWidth(0);
-        btnEliminar.setMinHeight(0);
-        btnEliminar.setMinimumWidth(0);
-        btnEliminar.setMinimumHeight(0);
-        btnEliminar.setPadding(0, 0, 0, 0);
-        btnEliminar.setIncludeFontPadding(false);
-
-        // Fondo rojo claro
-        btnEliminar.setBackgroundTintList(
-                ColorStateList.valueOf(
-                        Color.rgb(255, 232, 235)
-                )
-        );
+        ImageButton btnEliminar = new ImageButton(this);
+        btnEliminar.setImageResource(R.drawable.ic_delete);
+        btnEliminar.setBackgroundColor(Color.TRANSPARENT);
+        btnEliminar.setPadding(dp(8), dp(8), dp(8), dp(8));
+        btnEliminar.setContentDescription(getString(R.string.eliminar_participante));
 
         // Tamaño de 40dp
         LinearLayout.LayoutParams parametrosEliminar =
@@ -184,8 +164,6 @@ public class TorneosActivity extends AppCompatActivity {
                         dp(40),
                         dp(40)
                 );
-
-        parametrosEliminar.setMargins(dp(8), 0, 0, 0);
 
         fila.addView(btnEliminar, parametrosEliminar);
 

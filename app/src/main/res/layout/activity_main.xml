@@ -6,119 +6,137 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FDFDFD"
+    android:background="@color/versus_background"
     tools:context=".MainActivity">
 
-    <!-- LOGO -->
-    <ImageView
-        android:id="@+id/imgLogo"
-        android:layout_width="299dp"
-        android:layout_height="120dp"
-        android:layout_marginTop="96dp"
-        android:scaleType="fitCenter"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/versus_logo" />
-
-    <!-- TARJETA TORNEOS -->
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardTorneos"
-        android:layout_width="300dp"
-        android:layout_height="170dp"
-        android:layout_marginTop="100dp"
-        app:cardBackgroundColor="#EEEEEE"
-        app:cardCornerRadius="16dp"
-        app:cardElevation="0dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/imgLogo">
+        app:layout_constraintEnd_toEndOf="parent">
 
         <LinearLayout
-            android:id="@+id/layoutContenidoTorneos"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="16dp">
-
+            android:gravity="center_vertical"
+            android:padding="24dp">
             <ImageView
-                android:id="@+id/imgTrofeo"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_marginBottom="8dp"
+                android:id="@+id/imgLogo"
+                android:layout_width="260dp"
+                android:layout_height="104dp"
+                android:layout_marginTop="24dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="32dp"
                 android:scaleType="fitCenter"
-                app:srcCompat="@drawable/ic_trofeo" />
+                app:srcCompat="@drawable/versus_logo" />
 
-            <TextView
-                android:id="@+id/txtTorneos"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="TORNEOS"
-                android:textColor="#111111"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/txtDescripcionTorneos"
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardTorneos"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="Creá y organizá torneos entre amigos"
-                android:textAlignment="center"
-                android:textColor="#555555"
-                android:textSize="14sp" />
+                android:layout_marginTop="0dp"
+                app:cardBackgroundColor="@color/versus_surface"
+                app:cardCornerRadius="0dp"
+                android:foreground="?attr/selectableItemBackground"
+                android:focusable="true"
+                app:cardElevation="0dp">
 
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
+                <LinearLayout
+                    android:id="@+id/layoutContenidoTorneos"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="156dp"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="24dp">
 
-    <!-- TARJETA EQUIPOS -->
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardEquipos"
-        android:layout_width="300dp"
-        android:layout_height="170dp"
-        android:layout_marginTop="16dp"
-        app:cardBackgroundColor="#EEEEEE"
-        app:cardCornerRadius="16dp"
-        app:cardElevation="0dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/cardTorneos">
+                    <ImageView
+                        android:id="@+id/imgTrofeo"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_marginBottom="8dp"
+                        android:scaleType="fitCenter"
+                        app:tint="@color/versus_primary"
+                        app:srcCompat="@drawable/ic_trofeo" />
 
-        <LinearLayout
-            android:id="@+id/layoutContenidoEquipos"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:padding="16dp">
+                    <TextView
+                        android:id="@+id/txtTorneos"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/inicio_torneos"
+                        android:textColor="@color/versus_text"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
 
-            <ImageView
-                android:id="@+id/imgEquipos"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_marginBottom="8dp"
-                android:scaleType="fitCenter"
-                app:srcCompat="@drawable/ic_usuarios" />
+                    <TextView
+                        android:id="@+id/txtDescripcionTorneos"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="@string/inicio_descripcion_torneos"
+                        android:textAlignment="center"
+                        android:textColor="@color/versus_text_secondary"
+                        android:textSize="14sp" />
 
-            <TextView
-                android:id="@+id/txtEquipos"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="EQUIPOS"
-                android:textColor="#111111"
-                android:textStyle="bold" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
 
-            <TextView
-                android:id="@+id/txtDescripcionEquipos"
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardEquipos"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="Armá equipos al azar con tus amigos"
-                android:textAlignment="center"
-                android:textColor="#555555"
-                android:textSize="14sp" />
+                android:layout_marginTop="16dp"
+                app:cardBackgroundColor="@color/versus_surface"
+                app:cardCornerRadius="0dp"
+                android:foreground="?attr/selectableItemBackground"
+                android:focusable="true"
+                app:cardElevation="0dp">
+
+                <LinearLayout
+                    android:id="@+id/layoutContenidoEquipos"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="156dp"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="24dp">
+
+                    <ImageView
+                        android:id="@+id/imgEquipos"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_marginBottom="8dp"
+                        android:scaleType="fitCenter"
+                        app:tint="@color/versus_primary"
+                        app:srcCompat="@drawable/ic_usuarios" />
+
+                    <TextView
+                        android:id="@+id/txtEquipos"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/inicio_equipos"
+                        android:textColor="@color/versus_text"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/txtDescripcionEquipos"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="@string/inicio_descripcion_equipos"
+                        android:textAlignment="center"
+                        android:textColor="@color/versus_text_secondary"
+                        android:textSize="14sp" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
 
         </LinearLayout>
-    </androidx.cardview.widget.CardView>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

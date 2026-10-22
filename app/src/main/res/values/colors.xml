@@ -2,4 +2,12 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="versus_background">#F2F4F7</color>
+    <color name="versus_surface">#FFFFFF</color>
+    <color name="versus_text">#17212F</color>
+    <color name="versus_text_secondary">#5C6878</color>
+    <color name="versus_primary">#356CA8</color>
+    <color name="versus_accent_surface">#DCEBFC</color>
+    <color name="versus_border">#CDD5DF</color>
+    <color name="versus_ripple">#26356CA8</color>
 </resources>

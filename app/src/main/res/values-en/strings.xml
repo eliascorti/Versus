@@ -1,7 +1,6 @@
 <resources>
     <string name="app_name">Versus</string>
 
-    <!-- Tournaments -->
     <string name="volver">Back</string>
     <string name="nuevo_torneo">New tournament</string>
     <string name="nombre_torneo">Tournament name</string>
@@ -25,7 +24,6 @@
     <string name="versus">VS</string>
 
 
-    <!-- Teams -->
     <string name="generar_equipos">Generate teams</string>
     <string name="jugadores">Players</string>
     <string name="hint_jugador">Player name</string>
@@ -38,8 +36,13 @@
     <string name="error_nombre_vacio">Enter a name</string>
     <string name="error_max_jugadores">Maximum 32 players</string>
     <string name="eliminar_jugador">Remove player</string>
+    <string name="eliminar_participante">Remove participant</string>
     <string name="equipo_numero">Team %1$d</string>
     <string name="jugadores_libres_titulo">Free players</string>
     <string name="error_jugadores_insuficientes">There are not enough players to generate the teams</string>
 
+    <string name="inicio_torneos">TOURNAMENTS</string>
+    <string name="inicio_descripcion_torneos">Create and organize tournaments with friends</string>
+    <string name="inicio_equipos">TEAMS</string>
+    <string name="inicio_descripcion_equipos">Create random teams with your friends</string>
 </resources>

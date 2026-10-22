@@ -6,15 +6,15 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FDFDFD"
+    android:background="@color/versus_background"
     tools:context=".EnfrentamientosActivity">
 
     <LinearLayout
         android:id="@+id/layoutEncabezado"
         android:layout_width="0dp"
         android:layout_height="56dp"
-        android:background="#FFFFFF"
-        android:elevation="3dp"
+        android:background="@color/versus_surface"
+        android:elevation="0dp"
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:paddingStart="16dp"
@@ -25,18 +25,20 @@
 
         <ImageView
             android:id="@+id/imgVolver"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:contentDescription="@string/volver"
-            app:srcCompat="@drawable/left_arrow" />
+            android:padding="12dp"
+            app:srcCompat="@drawable/left_arrow"
+            android:background="?attr/selectableItemBackground" />
 
         <TextView
             android:id="@+id/txtTitulo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="4dp"
             android:text="Enfrentamientos"
-            android:textColor="#17212F"
+            android:textColor="@color/versus_text"
             android:textSize="20sp"
             android:textStyle="bold" />
 
@@ -64,7 +66,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Torneo de ejemplo"
-                android:textColor="#17212F"
+                android:textColor="@color/versus_text"
                 android:textSize="24sp"
                 android:textStyle="bold" />
 
@@ -74,7 +76,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:text="Ronda 1"
-                android:textColor="#5D93D0"
+                android:textColor="@color/versus_primary"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
@@ -84,14 +86,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="Seleccioná el ganador de cada enfrentamiento para avanzar a la siguiente ronda."
-                android:textColor="#788697"
+                android:textColor="@color/versus_text_secondary"
                 android:textSize="14sp" />
 
             <LinearLayout
                 android:id="@+id/layoutEncabezadoPartidos"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="24dp"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
@@ -101,7 +103,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Enfrentamientos"
-                    android:textColor="#17212F"
+                    android:textColor="@color/versus_text"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -110,7 +112,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="0/0"
-                    android:textColor="#788697"
+                    android:textColor="@color/versus_text_secondary"
                     android:textSize="14sp" />
 
             </LinearLayout>
@@ -122,31 +124,75 @@
                 android:layout_marginTop="16dp"
                 android:orientation="vertical" />
 
+            <Button
+                style="@style/Widget.Versus.Button"
+                android:id="@+id/btnSiguienteRonda"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginTop="24dp"
+                android:text="Siguiente ronda"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <ScrollView
+        android:id="@+id/scrollCampeon"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/layoutEncabezado"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
             <LinearLayout
                 android:id="@+id/layoutCampeon"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
-                android:background="#DCEBFC"
+                android:layout_gravity="center"
+                android:layout_margin="24dp"
+                android:background="@drawable/resultado_equipo_background"
                 android:gravity="center"
                 android:orientation="vertical"
-                android:padding="24dp"
-                android:visibility="gone">
+                android:padding="32dp"
+                android:visibility="gone"
+                android:accessibilityLiveRegion="polite">
+
+                <TextView
+                    android:id="@+id/txtTorneoCampeon"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="24dp"
+                    android:gravity="center"
+                    android:textColor="@color/versus_text_secondary"
+                    android:textSize="14sp"
+                    tools:text="Torneo de ejemplo" />
 
                 <TextView
                     android:id="@+id/txtTrofeo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="🏆"
-                    android:textSize="42sp" />
+                    android:textSize="64sp" />
 
                 <TextView
                     android:id="@+id/txtTituloCampeon"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
+                    android:gravity="center"
                     android:text="¡Tenemos un campeón!"
-                    android:textColor="#17212F"
+                    android:textColor="@color/versus_text"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -157,26 +203,13 @@
                     android:layout_marginTop="12dp"
                     android:gravity="center"
                     android:text="Nombre del ganador"
-                    android:textColor="#5D93D0"
-                    android:textSize="26sp"
+                    android:textColor="@color/versus_primary"
+                    android:textSize="32sp"
                     android:textStyle="bold" />
 
             </LinearLayout>
 
-            <Button
-                android:id="@+id/btnSiguienteRonda"
-                android:layout_width="match_parent"
-                android:layout_height="56dp"
-                android:layout_marginTop="32dp"
-                android:backgroundTint="#5D93D0"
-                android:text="Siguiente ronda"
-                android:textAllCaps="false"
-                android:textColor="#FFFFFF"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-
-        </LinearLayout>
-
+        </FrameLayout>
     </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

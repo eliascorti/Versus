@@ -6,16 +6,15 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FDFDFD"
+    android:background="@color/versus_background"
     tools:context=".EquiposActivity">
 
-    <!-- Encabezado -->
     <LinearLayout
         android:id="@+id/layoutEncabezado"
         android:layout_width="0dp"
         android:layout_height="56dp"
-        android:background="#FFFFFF"
-        android:elevation="3dp"
+        android:background="@color/versus_surface"
+        android:elevation="0dp"
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:paddingStart="16dp"
@@ -26,24 +25,25 @@
 
         <ImageView
             android:id="@+id/imgVolver"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:contentDescription="@string/volver"
-            app:srcCompat="@drawable/left_arrow" />
+            android:padding="12dp"
+            app:srcCompat="@drawable/left_arrow"
+            android:background="?attr/selectableItemBackground" />
 
         <TextView
             android:id="@+id/txtTitulo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="4dp"
             android:text="@string/generar_equipos"
-            android:textColor="#17212F"
+            android:textColor="@color/versus_text"
             android:textSize="20sp"
             android:textStyle="bold" />
 
     </LinearLayout>
 
-    <!-- Contenido desplazable -->
     <ScrollView
         android:id="@+id/scrollContenido"
         android:layout_width="0dp"
@@ -61,7 +61,6 @@
             android:orientation="vertical"
             android:padding="20dp">
 
-            <!-- Encabezado jugadores -->
             <LinearLayout
                 android:id="@+id/layoutEncabezadoJugadores"
                 android:layout_width="match_parent"
@@ -75,7 +74,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/jugadores"
-                    android:textColor="#17212F"
+                    android:textColor="@color/versus_text"
                     android:textSize="17sp"
                     android:textStyle="bold" />
 
@@ -84,12 +83,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/contador_inicial"
-                    android:textColor="#788697"
+                    android:textColor="@color/versus_text_secondary"
                     android:textSize="14sp" />
 
             </LinearLayout>
 
-            <!-- Agregar jugador -->
             <LinearLayout
                 android:id="@+id/layoutAgregarJugador"
                 android:layout_width="match_parent"
@@ -99,6 +97,7 @@
                 android:orientation="horizontal">
 
                 <EditText
+                    style="@style/Widget.Versus.Input"
                     android:id="@+id/edtJugador"
                     android:layout_width="0dp"
                     android:layout_height="52dp"
@@ -106,43 +105,41 @@
                     android:hint="@string/hint_jugador"
                     android:inputType="text|textCapWords"
                     android:singleLine="true"
-                    android:textColor="#17212F"
-                    android:textColorHint="#929BA6"
+                    android:textColor="@color/versus_text"
+                    android:textColorHint="@color/versus_text_secondary"
                     android:textSize="15sp" />
 
                 <Button
+                    style="@style/Widget.Versus.Button.Secondary"
                     android:id="@+id/btnAgregarJugador"
                     android:layout_width="52dp"
                     android:layout_height="52dp"
                     android:layout_marginStart="12dp"
-                    android:backgroundTint="#DCEBFC"
                     android:minWidth="0dp"
                     android:minHeight="0dp"
                     android:padding="0dp"
                     android:text="@string/agregar_simbolo"
                     android:textAllCaps="false"
-                    android:textColor="#17212F"
+                    android:textColor="@color/versus_text"
                     android:textSize="24sp" />
 
             </LinearLayout>
 
-            <!-- Lista dinámica de jugadores -->
             <LinearLayout
                 android:id="@+id/layoutListaJugadores"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:orientation="vertical"
-                android:padding="4dp" />
+                android:padding="0dp" />
 
-            <!-- Cantidad de equipos -->
             <TextView
                 android:id="@+id/txtCantidadEquiposTitulo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="24dp"
                 android:text="@string/cantidad_equipos"
-                android:textColor="#17212F"
+                android:textColor="@color/versus_text"
                 android:textSize="17sp"
                 android:textStyle="bold" />
 
@@ -155,16 +152,16 @@
                 android:orientation="horizontal">
 
                 <Button
+                    style="@style/Widget.Versus.Button.Secondary"
                     android:id="@+id/btnRestarEquipo"
                     android:layout_width="52dp"
                     android:layout_height="52dp"
-                    android:backgroundTint="#DCEBFC"
                     android:minWidth="0dp"
                     android:minHeight="0dp"
                     android:padding="0dp"
                     android:text="-"
                     android:textAllCaps="false"
-                    android:textColor="#17212F"
+                    android:textColor="@color/versus_text"
                     android:textSize="24sp" />
 
                 <TextView
@@ -173,33 +170,32 @@
                     android:layout_height="52dp"
                     android:gravity="center"
                     android:text="2"
-                    android:textColor="#17212F"
+                    android:textColor="@color/versus_text"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
                 <Button
+                    style="@style/Widget.Versus.Button.Secondary"
                     android:id="@+id/btnSumarEquipo"
                     android:layout_width="52dp"
                     android:layout_height="52dp"
-                    android:backgroundTint="#DCEBFC"
                     android:minWidth="0dp"
                     android:minHeight="0dp"
                     android:padding="0dp"
                     android:text="@string/agregar_simbolo"
                     android:textAllCaps="false"
-                    android:textColor="#17212F"
+                    android:textColor="@color/versus_text"
                     android:textSize="24sp" />
 
             </LinearLayout>
 
-            <!-- Distribución -->
             <TextView
                 android:id="@+id/txtDistribucionTitulo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="24dp"
                 android:text="@string/distribucion"
-                android:textColor="#17212F"
+                android:textColor="@color/versus_text"
                 android:textSize="17sp"
                 android:textStyle="bold" />
 
@@ -208,7 +204,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="14dp"
-                android:background="#F2F4F7"
+                android:background="@drawable/resultado_equipo_background"
                 android:orientation="vertical"
                 android:padding="16dp">
 
@@ -217,7 +213,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text=""
-                    android:textColor="#17212F"
+                    android:textColor="@color/versus_text"
                     android:textSize="15sp"
                     tools:text="3 jugadores por equipo" />
 
@@ -227,22 +223,21 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:text=""
-                    android:textColor="#788697"
+                    android:textColor="@color/versus_text_secondary"
                     android:textSize="15sp"
                     tools:text="1 jugador libre" />
 
             </LinearLayout>
 
-            <!-- Botón generar -->
             <Button
+                style="@style/Widget.Versus.Button"
                 android:id="@+id/btnGenerarEquipos"
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
-                android:layout_marginTop="32dp"
-                android:backgroundTint="#5D93D0"
+                android:layout_marginTop="24dp"
                 android:text="@string/generar_equipos"
                 android:textAllCaps="false"
-                android:textColor="#FFFFFF"
+                android:textColor="@color/white"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 

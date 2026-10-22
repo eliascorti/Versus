@@ -332,6 +332,11 @@ public class EnfrentamientosActivity extends AppCompatActivity {
         txtRonda.setText("Torneo finalizado");
         txtIndicaciones.setVisibility(View.GONE);
         txtNombreCampeon.setText(nombre);
+        TextView txtTorneoCampeon = findViewById(R.id.txtTorneoCampeon);
+        TextView txtNombreTorneo = findViewById(R.id.txtNombreTorneo);
+        txtTorneoCampeon.setText(txtNombreTorneo.getText());
+        findViewById(R.id.scrollContenido).setVisibility(View.GONE);
+        findViewById(R.id.scrollCampeon).setVisibility(View.VISIBLE);
         layoutCampeon.setVisibility(View.VISIBLE);
         btnSiguienteRonda.setVisibility(View.GONE);
     }
