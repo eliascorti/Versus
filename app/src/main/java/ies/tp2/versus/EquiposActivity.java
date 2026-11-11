@@ -43,8 +43,11 @@ public class EquiposActivity extends AppCompatActivity {
 
     private ArrayList<String> jugadores;
 
+    // Cantidad inicial. Para cambiarla, revisá también txtCantidadEquipos en activity_equipos.xml.
     private int cantidadEquipos = 2;
 
+    // El límite controla el alta y el contador. Si cambia, revisá contador_inicial
+    // y error_max_jugadores en ambos idiomas. contador_inicial también se usa en Torneos.
     private static final int MAX_JUGADORES = 32;
 
     private LinearLayout layoutResultados;
@@ -104,7 +107,7 @@ public class EquiposActivity extends AppCompatActivity {
         // Botón agregar jugador
         btnAgregarJugador.setOnClickListener(v -> agregarJugador());
 
-        // Restar equipos
+        // El botón − aplica el mínimo de 2 equipos.
         btnRestarEquipo.setOnClickListener(v -> {
 
             if (cantidadEquipos > 2) {
@@ -119,7 +122,7 @@ public class EquiposActivity extends AppCompatActivity {
 
         });
 
-        // Sumar equipos
+        // Si hay que poner un máximo de equipos, el botón + es el punto de entrada.
         btnSumarEquipo.setOnClickListener(v -> {
 
             cantidadEquipos++;
@@ -142,6 +145,7 @@ public class EquiposActivity extends AppCompatActivity {
         layoutResultados = findViewById(R.id.layoutResultados);
     }
 
+    // El sorteo exige al menos un jugador por equipo, mezcla la lista y arma las tarjetas.
     private void generarEquipos() {
 
         if (jugadores.size() < cantidadEquipos) {
@@ -162,6 +166,8 @@ public class EquiposActivity extends AppCompatActivity {
         // Mezclamos los jugadores aleatoriamente
         Collections.shuffle(jugadoresMezclados);
 
+        // Con 7 jugadores y 3 equipos, la división entera da 2 por equipo
+        // y el resto (%) deja 1 libre. Si cambia el reparto, revisá actualizarDistribucion().
         int jugadoresPorEquipo =
                 jugadoresMezclados.size() / cantidadEquipos;
 
@@ -171,6 +177,7 @@ public class EquiposActivity extends AppCompatActivity {
         // Eliminamos los resultados del sorteo anterior
         layoutResultados.removeAllViews();
 
+        // Este índice recorre la lista mezclada una sola vez, incluidos los libres.
         int posicionJugador = 0;
 
         // Crear las tarjetas de cada equipo
@@ -223,7 +230,7 @@ public class EquiposActivity extends AppCompatActivity {
             layoutResultados.addView(tarjetaLibres);
         }
 
-        //Scroll automatico hacia las tarjetas de equipo
+        // Esperamos a que se acomoden las tarjetas antes de mover el scroll al resultado.
         scrollContenido.post(() -> {
 
             int posicionY = layoutResultados.getTop();
@@ -235,6 +242,7 @@ public class EquiposActivity extends AppCompatActivity {
         });
     }
 
+    // Los márgenes y el fondo de las tarjetas del sorteo se definen acá.
     private LinearLayout crearTarjeta() {
 
         LinearLayout tarjeta = new LinearLayout(this);
@@ -332,6 +340,7 @@ public class EquiposActivity extends AppCompatActivity {
         return textView;
     }
 
+    // Valida el nombre y el límite antes de agregar el jugador a la lista.
     private void agregarJugador() {
 
         String nombre = edtJugador
@@ -361,7 +370,7 @@ public class EquiposActivity extends AppCompatActivity {
             return;
         }
 
-        // Evitar nombres duplicados
+        // Ana y ana cuentan como el mismo nombre porque se ignoran las mayúsculas.
         for (String jugadorExistente : jugadores) {
 
             if (jugadorExistente.equalsIgnoreCase(nombre)) {
@@ -385,6 +394,7 @@ public class EquiposActivity extends AppCompatActivity {
         actualizarDistribucion();
     }
 
+    // Cada alta o baja reconstruye las filas con los índices actuales de la lista.
     private void actualizarListaJugadores() {
 
         layoutListaJugadores.removeAllViews();
@@ -502,6 +512,7 @@ public class EquiposActivity extends AppCompatActivity {
         );
     }
 
+    // Vista previa del reparto. Si cambia la regla, aplicala también en generarEquipos().
     private void actualizarDistribucion() {
 
         int totalJugadores = jugadores.size();

@@ -24,6 +24,7 @@ import java.util.Collections;
 public class EnfrentamientosActivity extends AppCompatActivity {
 
     private ArrayList<String> participantes = new ArrayList<>();
+    // Incluye al participante que pasa directo cuando la ronda tiene un número impar.
     private ArrayList<String> ganadores = new ArrayList<>();
     private int numeroRonda = 1;
     private int cantidadPartidos = 0;
@@ -46,7 +47,7 @@ public class EnfrentamientosActivity extends AppCompatActivity {
         generarPrimeraRonda();
     }
 
-    // Recibimos los datos desde TorneosActivity
+    // Leemos las mismas claves y tipos que envía accionGenerarTorneo() en TorneosActivity.
     private void recibirDatos() {
         String nombreTorneo = getIntent().getStringExtra("nombreTorneo");
         ArrayList<String> listaRecibida =
@@ -95,7 +96,7 @@ public class EnfrentamientosActivity extends AppCompatActivity {
         generarEnfrentamientos();
     }
 
-    // Limpiamos los partidos anteriores y generamos los nuevos
+    // Reinicia los resultados y arma los cruces de la ronda con la lista ya mezclada.
     private void generarEnfrentamientos() {
         LinearLayout layoutLista =
                 (LinearLayout) findViewById(R.id.layoutListaEnfrentamientos);
@@ -109,7 +110,8 @@ public class EnfrentamientosActivity extends AppCompatActivity {
         cantidadPartidos = participantes.size() / 2;
         int cantidadLibres = participantes.size() % 2;
 
-        // Si hay una cantidad impar, el último pasa directamente
+        // Si la cantidad es impar, el último ya mezclado entra a ganadores sin jugar.
+        // Si cambia esta regla, revisá actualizarContador() y accionSiguienteRonda().
         if (cantidadLibres == 1) {
             String participanteLibre = participantes.get(participantes.size() - 1);
             ganadores.add(participanteLibre);
@@ -130,7 +132,7 @@ public class EnfrentamientosActivity extends AppCompatActivity {
         actualizarContador();
     }
 
-    // Creamos la tarjeta de cada enfrentamiento
+    // Las tarjetas de los partidos se arman acá en Java y se agregan al contenedor del XML.
     private void crearPartido(int numeroPartido, String participante1, String participante2) {
         LinearLayout layoutLista =
                 (LinearLayout) findViewById(R.id.layoutListaEnfrentamientos);
@@ -225,7 +227,7 @@ public class EnfrentamientosActivity extends AppCompatActivity {
         return boton;
     }
 
-    // Guardamos al ganador y actualizamos los colores
+    // Si se cambia la selección, se reemplaza al ganador anterior de ese partido.
     private void seleccionarGanador(
             String ganador,
             String perdedor,
@@ -268,7 +270,7 @@ public class EnfrentamientosActivity extends AppCompatActivity {
         layoutLista.addView(txtLibre);
     }
 
-    // Actualizamos el contador de partidos resueltos
+    // Se resta el pase directo porque aparece en ganadores sin haber resuelto un partido.
     private void actualizarContador() {
         TextView txtContador =
                 (TextView) findViewById(R.id.txtContadorPartidos);
@@ -279,7 +281,7 @@ public class EnfrentamientosActivity extends AppCompatActivity {
         txtContador.setText(partidosResueltos + "/" + cantidadPartidos);
     }
 
-    // Validamos los ganadores y avanzamos a la siguiente ronda
+    // Para avanzar debe haber un ganador por partido más el pase directo, si corresponde.
     private void accionSiguienteRonda() {
         int cantidadLibres = participantes.size() % 2;
 
@@ -301,7 +303,8 @@ public class EnfrentamientosActivity extends AppCompatActivity {
             return;
         }
 
-        // Sorteamos nuevamente los enfrentamientos
+        // Este sorteo es para las rondas siguientes. El primero está en generarPrimeraRonda().
+        // Para armar un cuadro fijo, revisá también el orden en que se guardan los ganadores.
         Collections.shuffle(participantes);
 
         numeroRonda++;

@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    //comentario de prueba
+    // Las tarjetas se definen en activity_main.xml y sus destinos se eligen acá.
 
     private void activarTarjetas() {
         CardView cardTorneos = findViewById(R.id.cardTorneos);

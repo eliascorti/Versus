@@ -24,6 +24,7 @@ import java.util.ArrayList;
 
 public class TorneosActivity extends AppCompatActivity {
 
+    // La lista contiene los nombres que se enviarán a la pantalla de enfrentamientos.
     private ArrayList<String> participantes = new ArrayList<>();
 
     @Override
@@ -81,6 +82,7 @@ public class TorneosActivity extends AppCompatActivity {
         });
     }
 
+    // Valida el nombre y, si se acepta, agrega el dato a la lista y dibuja su fila.
     private void accionAgregarParticipante() {
 
         EditText edtParticipante =
@@ -97,13 +99,14 @@ public class TorneosActivity extends AppCompatActivity {
             return;
         }
 
-        // Validar máximo de participantes
+        // Si cambia el máximo, ajustá este control, el mensaje, actualizarContador()
+        // y el contador inicial del XML. El recurso contador_inicial también se usa en Equipos.
         if (participantes.size() >= 32) {
             Toast.makeText(this, "Máximo 32 participantes", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        // Validar nombres repetidos
+        // Se usa el nombre para identificar al participante al borrarlo y al elegir ganadores.
         for (String participante : participantes) {
             if (participante.equalsIgnoreCase(nombre)) {Toast.makeText(this, "El participante ya existe", Toast.LENGTH_SHORT).show();
                 return;
@@ -184,6 +187,7 @@ public class TorneosActivity extends AppCompatActivity {
         edtParticipante.setText("");
     }
 
+    // La papelera quita tanto el nombre que se enviaría al torneo como su fila visible.
     private void accionEliminarParticipante(String nombre, LinearLayout fila) {
 
         LinearLayout layoutLista =
@@ -207,6 +211,7 @@ public class TorneosActivity extends AppCompatActivity {
     }
 
 
+    // Valida el nombre del torneo y el mínimo de participantes antes de abrir el cuadro.
     private void accionGenerarTorneo() {
 
         EditText edtNombreTorneo =
@@ -224,6 +229,7 @@ public class TorneosActivity extends AppCompatActivity {
             return;
         }
 
+        // Si cambia el mínimo, revisá también recibirDatos() y generarPrimeraRonda().
         if (participantes.size() < 2) {
             Toast.makeText(
                     this,
@@ -238,6 +244,7 @@ public class TorneosActivity extends AppCompatActivity {
                 EnfrentamientosActivity.class
         );
 
+        // Si cambiás las claves o el tipo de dato, ajustá recibirDatos() en EnfrentamientosActivity.
         intent.putExtra("nombreTorneo", nombreTorneo);
         intent.putStringArrayListExtra("participantes", participantes);
 
